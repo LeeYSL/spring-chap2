@@ -16,8 +16,13 @@ public class main1 {
 		 * 5.InfraredRatSensor 객체 = > 3개 xml 설정
 		 * 6.HomeController 객체 =>1개 @Component
 		 * 7.Executor 객체 => 1개 @Component
-		 * 8.Worken 객체 =1개 @Component
+		 * 8.Worker 객체 =1개 @Component
 		 * 
+		 * GenericXmlApplicationContext : ApplicationContext 구현 클래스
+		 * ApplicationContext :인터페이스.객체를 미리 생성
+		 *                     annotation.xml에 정의된 객체들읠 미리 생성하여 저장
+		 * WebapplicationContext : ApplicationContext의 하위 인터페이스             
+		 *                      =>ApplicationContext + web 기능 
 		 */
 		ApplicationContext ctx = 
 				  new GenericXmlApplicationContext("classpath:annotation.xml");

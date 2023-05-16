@@ -3,12 +3,13 @@ package gdu.kr.chap2;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component // component-scan에 의해 객체 생성 됨
 public class HomeController {
 	private AlarmDevice alarmDevice;
 	private Viewer viewer;
@@ -18,7 +19,8 @@ public class HomeController {
 	private Camera camera2;
 	@Autowired
 	private Camera camera3;
-	@Autowired
+//	@Autowired
+	@Resource(name="camera4") //camera4 라는 이름을 가진 객체를 주입하라는 뜻
 	private Camera camera4;
 	@Autowired(required = false) //주입 되는 객체(Record 객체)가 없어도 허용
 	private Recoder recoder; //recoder = null로 저장 됨
@@ -46,6 +48,7 @@ public class HomeController {
     @Qualifier("intrusionDetection") //별명 
     //InfraredRaySensor 객체 중 별명이 intrusionDetection 인 객체들만 주입
     //setSensors : 창 센서와, 현관센서 객체 저장
+    //전등센서에는 안 넣어서 안 나온다.?
     public void setSensors(List<InfraredRaySensor> sensors) { //가장 먼저 호출 됨
     	System.out.println("setSensors() 메서드 호출");
         this.sensors =sensors;
